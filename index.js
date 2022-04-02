@@ -5,7 +5,7 @@ const upload = multer({ dest: "ficheros_subidos/" });
 const pg = require("pg");
 const pool = new pg.Pool({
   user: "postgres",
-  host: "localhost",
+  host: "192.168.1.26",
   database: "postgres",
   password: "postgres",
   port: 5436,
@@ -18,7 +18,7 @@ app.get("/", (req, res) => {
 });
 const bucket = "curso";
 const minioClient = new MinioClient({
-  endPoint: "localhost",
+  endPoint: "192.168.1.26",
   port: 9002,
   accessKey: "minioadmin",
   secretKey: "minioadmin",
@@ -142,7 +142,7 @@ app.post("/ficheros/:id/permisos", async (req, res) => {
   }
 });
 
-const server = app.listen(3000, "127.0.0.1", () => {
+const server = app.listen(3000, "0.0.0.0", () => {
   const address = server.address();
   console.log(`Server listening on ${address.address}:${address.port}`);
 });

@@ -48,3 +48,13 @@ docker run -d -p 8000:8000 -p 9900:9000 -p 9443:9443 --name portainer \
 - Subir la imagen Docker a un registro de contenedores (Docker Hub, quay.io, ghcr.io)
 - Probar imagen docker en local
 - Probar imagen docker en Kubernetes
+
+Construir imagen:
+```bash
+docker build -t curso-nodejs:1.0.0 .
+```
+
+Lanzar imagen:
+```bash
+docker run --rm -p 3001:3000  --name curso-nodejs curso-nodejs:1.0.0 
+```

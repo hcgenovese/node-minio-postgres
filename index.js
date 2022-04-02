@@ -117,17 +117,26 @@ app.post("/ficheros", upload.single("fichero"), async (req, res) => {
     res.send(e);
   }
 });
-app.post("/ficheros/:id/permisos", async (req, res) => {
+app.get("/ficheros", async (req, res) => {
   try {
-    const file = req.file;
-    await minioClient.fPutObject(bucket, file.originalname, file.path, {
-      "content-type": file.mimetype,
-    });
-    const userId = (req.headers["user-id"] = req.headers["user-id"] || 1);
-    await pool.query(
-      `INSERT INTO files (name, user_id) VALUES ('${file.originalname}', ${userId})`
+    const userId = req.headers["user-id"] || 1;
+    const files = await pool.query(
+      `SELECT * FROM files WHERE user_id = ${userId}`
     );
-    res.send("File uploaded");
+    res.send(files.rows);
+  } catch (e) {
+    res.send(e);
+  }
+});
+// /ficheros/12/permisos
+app.post("/ficheros/:id/permisos", async (req, res) => {
+  const fileId = req.params.id; // fileId=12
+  const userId = req.headers["user-id"] || 1;
+  try {
+    await pool.query(
+      `INSERT INTO users_files (user_id, file_id) VALUES (${userId}, ${fileId})`
+    );
+    res.send("Permisos asignados");
   } catch (e) {
     res.send(e);
   }

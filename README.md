@@ -7,7 +7,7 @@ Aplicacion en Node.JS, que tenga las siguientes funcionalidades:
 - [X] Crear usuarios
     + Usuario/Password
 - [ ] Autenticar usuarios
-- [ ] Asignar permisos a los ficheros subidos
+- [X] Asignar permisos a los ficheros subidos
 
 
 S3, Simple Storage Service de Amazon
@@ -40,3 +40,11 @@ docker run -d -p 8000:8000 -p 9900:9000 -p 9443:9443 --name portainer \
     portainer/portainer-ce:2.9.3
 
 ```
+
+## Desplegar aplicacion
+
+- Construir un Dockerfile
+- Construir la imagen Docker
+- Subir la imagen Docker a un registro de contenedores (Docker Hub, quay.io, ghcr.io)
+- Probar imagen docker en local
+- Probar imagen docker en Kubernetes

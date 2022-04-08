@@ -26,9 +26,9 @@ const minioClient = new MinioClient({
   region: "us-east-1",
 });
 async function initDatabse() {
-  await pool.query(`DROP TABLE IF EXISTS users_files;`);
-  await pool.query(`DROP TABLE IF EXISTS files;`);
-  await pool.query(`DROP TABLE IF EXISTS users;`);
+  // await pool.query(`DROP TABLE IF EXISTS users_files;`);
+  // await pool.query(`DROP TABLE IF EXISTS files;`);
+  // await pool.query(`DROP TABLE IF EXISTS users;`);
 
   await pool.query(`
 CREATE TABLE IF NOT EXISTS users (
@@ -55,6 +55,7 @@ CREATE TABLE IF NOT EXISTS users_files (
 )
 `);
 }
+
 // asignar un usuario a un fichero
 initDatabse();
 app.post("/users", (req, res) => {

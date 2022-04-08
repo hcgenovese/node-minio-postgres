@@ -43,18 +43,50 @@ docker run -d -p 8000:8000 -p 9900:9000 -p 9443:9443 --name portainer \
 
 ## Desplegar aplicacion
 
-- Construir un Dockerfile
-- Construir la imagen Docker
-- Subir la imagen Docker a un registro de contenedores (Docker Hub, quay.io, ghcr.io)
-- Probar imagen docker en local
-- Probar imagen docker en Kubernetes
+- [X] Construir un Dockerfile
+- [X] Construir la imagen Docker
+- [X] Probar imagen docker en local
+- [X] Subir la imagen Docker a un registro de contenedores (Docker Hub, quay.io, ghcr.io)
+- [ ] Crear un cluster de Kubernetes
+- [ ] Desplegar contenedor en Kubernete
+- [ ] Probar el servicio
 
 Construir imagen:
 ```bash
-docker build -t curso-nodejs:1.0.0 .
+docker build -t kfsoftware/curso-nodejs:1.0.1 .
+```
+
+Subir la imagen a docker hub:
+```bash
+docker push kfsoftware/curso-nodejs:1.0.1
 ```
 
 Lanzar imagen:
 ```bash
-docker run --rm -p 3001:3000  --name curso-nodejs curso-nodejs:1.0.0 
+docker run --rm -p 3001:3000  --name curso-nodejs kfsoftware/curso-nodejs:1.0.1
+```
+## Instalar LENS
+
+https://k8slens.dev/
+
+## Desplegar cluster de Kubernetes
+
+Instalar KinD: https://kind.sigs.k8s.io/
+
+```bash
+kind create cluster
+```
+
+```bash
+kubectl create deployment curso --image=kfsoftware/curso-nodejs:1.0.1
+```
+
+Crear un servicio
+```bash
+kubectl expose deployment curso --port=80 --target-port=3000
+```
+
+Acceder al servicio
+```bash
+kubectl port-forward svc/curso 3002:80
 ```

@@ -1,6 +1,6 @@
 {
   "name": "docker",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Aplicacion en Node.JS, que tenga las siguientes funcionalidades:",
   "main": "index.js",
   "scripts": {

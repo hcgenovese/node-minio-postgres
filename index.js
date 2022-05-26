@@ -5,10 +5,10 @@ const upload = multer({ dest: "ficheros_subidos/" });
 const pg = require("pg");
 const pool = new pg.Pool({
   user: "postgres",
-  host: "192.168.1.26",
+  host: "localhost",
   database: "postgres",
   password: "postgres",
-  port: 5436,
+  port: 5432,
 });
 const app = express();
 app.use(express.json());

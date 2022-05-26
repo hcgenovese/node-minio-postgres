@@ -18,7 +18,7 @@ app.get("/", (req, res) => {
 });
 const bucket = "curso";
 const minioClient = new MinioClient({
-  endPoint: "192.168.1.26",
+  endPoint: "localhost",
   port: 9002,
   accessKey: "minioadmin",
   secretKey: "minioadmin",
@@ -26,10 +26,6 @@ const minioClient = new MinioClient({
   region: "us-east-1",
 });
 async function initDatabse() {
-  // await pool.query(`DROP TABLE IF EXISTS users_files;`);
-  // await pool.query(`DROP TABLE IF EXISTS files;`);
-  // await pool.query(`DROP TABLE IF EXISTS users;`);
-
   await pool.query(`
 CREATE TABLE IF NOT EXISTS users (
     id SERIAL PRIMARY KEY,

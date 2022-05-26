@@ -65,6 +65,7 @@ Lanzar imagen:
 ```bash
 docker run --rm -p 3001:3000  --name curso-nodejs kfsoftware/curso-nodejs:1.0.1
 ```
+
 ## Instalar LENS
 
 https://k8slens.dev/

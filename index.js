@@ -8,7 +8,7 @@ const pool = new pg.Pool({
   host: "localhost",
   database: "postgres",
   password: "postgres",
-  port: 5432,
+  port: 5436,
 });
 const app = express();
 app.use(express.json());

@@ -47,9 +47,9 @@ docker run -d -p 8000:8000 -p 9900:9000 -p 9443:9443 --name portainer \
 - [X] Construir la imagen Docker
 - [X] Probar imagen docker en local
 - [X] Subir la imagen Docker a un registro de contenedores (Docker Hub, quay.io, ghcr.io)
-- [ ] Crear un cluster de Kubernetes
-- [ ] Desplegar contenedor en Kubernete
-- [ ] Probar el servicio
+- [X] Crear un cluster de Kubernetes
+- [X] Desplegar contenedor en Kubernetes
+- [X] Probar el servicio
 
 Construir imagen:
 ```bash
@@ -63,7 +63,7 @@ docker push kfsoftware/curso-nodejs:1.0.1
 
 Lanzar imagen:
 ```bash
-docker run --rm -p 3001:3000  --name curso-nodejs kfsoftware/curso-nodejs:1.0.1
+docker run --rm --network host  --name curso-nodejs kfsoftware/curso-nodejs:1.0.1
 ```
 
 ## Instalar LENS

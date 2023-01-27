@@ -4,3 +4,6 @@ services:
     build: .
     ports:
       - "3002:3000"
+networks:
+    default:
+          name: hd

@@ -5,10 +5,10 @@ const upload = multer({ dest: "ficheros_subidos/" });
 const pg = require("pg");
 const pool = new pg.Pool({
   user: "postgres",
-  host: "localhost",
+  host: "some-postgres",
   database: "postgres",
   password: "postgres",
-  port: 5436,
+  port: 5432,
 });
 const app = express();
 app.use(express.json());
@@ -18,7 +18,7 @@ app.get("/", (req, res) => {
 });
 const bucket = "curso";
 const minioClient = new MinioClient({
-  endPoint: "localhost",
+  endPoint: "minio",
   port: 9002,
   accessKey: "minioadmin",
   secretKey: "minioadmin",
@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS users_files (
 }
 
 // asignar un usuario a un fichero
-initDatabse();
+// initDatabse();
 app.post("/users", (req, res) => {
   const { name, password } = req.body;
   // TODO: hash password

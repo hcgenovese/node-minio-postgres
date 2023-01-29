@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS users_files (
 }
 
 // asignar un usuario a un fichero
-// initDatabse();
+ initDatabse();
 app.post("/users", (req, res) => {
   const { name, password } = req.body;
   // TODO: hash password
@@ -139,7 +139,7 @@ app.post("/ficheros/:id/permisos", async (req, res) => {
   }
 });
 
-const server = app.listen(3000, "0.0.0.0", () => {
+const server = app.listen(3004, () => {
   const address = server.address();
   console.log(`Server listening on ${address.address}:${address.port}`);
 });
